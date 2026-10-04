@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SafetyFive travels | Travel from Nigeria, checked before you pay</title>
+<meta name="description" content="SafetyFive travels is a UK and Nigeria travel agency for Nigerian passport holders. We check every file before we take a service fee, and we never guarantee a visa.">
+<meta name="theme-color" content="#0A1224">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { ink:'#0A1224', panel:'#101B33', line:'#22304F', gold:'#D4AF6A', mist:'#E8ECF5', muted:'#93A0BC' },
+    fontFamily: { display:['"Instrument Serif"','Georgia','serif'], sans:['"DM Sans"','system-ui','sans-serif'] }
+  } }
+}
+</script>
+<style>
+  body { background:#0A1224; color:#E8ECF5; }
+  :focus-visible { outline:2px solid #D4AF6A; outline-offset:3px; border-radius:6px; }
+  /* Hero: flight routes draw once on load */
+  .route { stroke-dasharray:1; stroke-dashoffset:1; animation:draw 2.2s cubic-bezier(.65,0,.35,1) forwards; }
+  .route:nth-of-type(2){ animation-delay:.25s } .route:nth-of-type(3){ animation-delay:.5s } .route:nth-of-type(4){ animation-delay:.75s }
+  .stop { opacity:0; animation:pop .5s ease forwards; }
+  .stop:nth-of-type(1){ animation-delay:1.6s } .stop:nth-of-type(2){ animation-delay:1.85s } .stop:nth-of-type(3){ animation-delay:2.1s } .stop:nth-of-type(4){ animation-delay:2.35s }
+  .hero-in { opacity:0; transform:translateY(14px); animation:rise .9s ease forwards; }
+  @keyframes draw { to { stroke-dashoffset:0 } }
+  @keyframes pop { to { opacity:1 } }
+  @keyframes rise { to { opacity:1; transform:none } }
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker { display:none; }
+  details[open] .plus { transform:rotate(45deg); }
+  .plus { transition:transform .25s ease; }
+  details .answer { animation:rise .35s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .route, .stop, .hero-in, details .answer { animation:none !important; opacity:1 !important; transform:none !important; stroke-dashoffset:0 !important; }
+    html { scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body class="font-sans antialiased">
+
+<header class="sticky top-0 z-40 border-b border-line/70 bg-ink/85 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+    <a href="#top" class="font-display text-2xl tracking-tight">SafetyFive <span class="text-gold">travels</span></a>
+    <nav class="hidden gap-8 text-sm text-muted md:flex" aria-label="Main">
+      <a class="hover:text-mist transition-colors" href="#services">Services</a>
+      <a class="hover:text-mist transition-colors" href="#process">How we work</a>
+      <a class="hover:text-mist transition-colors" href="#destinations">Destinations</a>
+      <a class="hover:text-mist transition-colors" href="#faq">Questions</a>
+    </nav>
+    <a href="#contact" class="rounded-full bg-gold px-5 py-2 text-sm font-semibold text-ink transition hover:bg-mist">Plan a trip</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-20 pt-16 md:grid-cols-2 md:pt-24">
+    <div>
+      <h1 class="hero-in font-display text-5xl leading-[1.05] sm:text-6xl lg:text-7xl">Travel from Nigeria, checked before you pay.</h1>
+      <p class="hero-in mt-6 max-w-md text-lg leading-relaxed text-muted" style="animation-delay:.2s">We are a UK and Nigeria team that reviews your documents face to face, tells you honestly where you stand, and plans the trip around what the rules allow.</p>
+      <div class="hero-in mt-9 flex flex-wrap gap-4" style="animation-delay:.4s">
+        <a href="#contact" class="rounded-full bg-gold px-7 py-3 font-semibold text-ink transition hover:bg-mist">Book a readiness review</a>
+        <a href="#process" class="rounded-full border border-line px-7 py-3 font-medium transition hover:border-gold hover:text-gold">See how we work</a>
+      </div>
+    </div>
+
+    <figure class="rounded-3xl border border-line bg-panel p-4 sm:p-6" aria-label="Routes from Lagos to four destinations">
+      <svg viewBox="0 0 420 360" class="w-full" role="img" aria-label="Flight routes from Lagos to Accra, Nairobi, Kigali and Cape Town">
+        <g fill="none" stroke="#D4AF6A" stroke-width="1.5" stroke-linecap="round">
+          <path class="route" pathLength="1" d="M120 150 Q150 90 190 95"/>
+          <path class="route" pathLength="1" d="M120 150 Q250 40 340 110"/>
+          <path class="route" pathLength="1" d="M120 150 Q230 170 300 215"/>
+          <path class="route" pathLength="1" d="M120 150 Q130 270 210 315"/>
+        </g>
+        <g fill="#E8ECF5" font-size="13" font-family="DM Sans, sans-serif">
+          <g class="stop"><circle cx="190" cy="95" r="4" fill="#D4AF6A"/><text x="198" y="90">Accra</text></g>
+          <g class="stop"><circle cx="340" cy="110" r="4" fill="#D4AF6A"/><text x="302" y="100">Nairobi</text></g>
+          <g class="stop"><circle cx="300" cy="215" r="4" fill="#D4AF6A"/><text x="310" y="220">Kigali</text></g>
+          <g class="stop"><circle cx="210" cy="315" r="4" fill="#D4AF6A"/><text x="220" y="320">Cape Town</text></g>
+        </g>
+        <circle cx="120" cy="150" r="7" fill="#D4AF6A"/>
+        <circle cx="120" cy="150" r="14" fill="none" stroke="#D4AF6A" stroke-opacity=".35"/>
+        <text x="60" y="180" fill="#E8ECF5" font-size="14" font-weight="600" font-family="DM Sans, sans-serif">Lagos</text>
+      </svg>
+      <figcaption class="mt-3 text-sm text-muted">Illustrative routes. Entry rules change, so we confirm each one on the official portal before we quote.</figcaption>
+    </figure>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="mx-auto max-w-6xl px-5 py-20">
+    <h2 class="font-display text-4xl sm:text-5xl">What we do</h2>
+    <p class="mt-4 max-w-xl text-muted">Six services, each with a clear job. We tell you at the start which one fits your profile.</p>
+    <div class="mt-12 grid gap-px overflow-hidden rounded-3xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
+      <article class="bg-ink p-8 lg:col-span-2">
+        <h3 class="font-display text-3xl text-gold">Complete trips on documents you can check</h3>
+        <p class="mt-3 max-w-lg leading-relaxed text-muted">Flights, hotels, insurance and itinerary for destinations that decide on paperwork: Kenya, Ghana, Rwanda, South Africa, Vietnam, Malaysia and more. Our strongest route for first-time travellers.</p>
+      </article>
+      <article class="bg-ink p-8">
+        <h3 class="text-lg font-semibold">Visa readiness review</h3>
+        <p class="mt-3 leading-relaxed text-muted">A paid, one-hour check of your identity, funds and ties. You get a written verdict, and the fee is credited if you go ahead.</p>
+      </article>
+      <article class="bg-ink p-8">
+        <h3 class="text-lg font-semibold">UK and Schengen visitor files</h3>
+        <p class="mt-3 leading-relaxed text-muted">Document verification and file preparation for strong profiles. UK files are reviewed by a regulated adviser.</p>
+      </article>
+      <article class="bg-ink p-8">
+        <h3 class="text-lg font-semibold">Study abroad admissions</h3>
+        <p class="mt-3 leading-relaxed text-muted">University placement with pre-offer financial checks, so the student, the university and the visa officer see the same story.</p>
+      </article>
+      <article class="bg-ink p-8">
+        <h3 class="text-lg font-semibold">Corporate travel desk</h3>
+        <p class="mt-3 leading-relaxed text-muted">Business travel for Nigerian employers, with risk planning built on a health and safety background.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Process: a true sequence, so steps are numbered -->
+  <section id="process" class="border-y border-line bg-panel/50">
+    <div class="mx-auto max-w-6xl px-5 py-20">
+      <h2 class="font-display text-4xl sm:text-5xl">How a file moves</h2>
+      <p class="mt-4 max-w-xl text-muted">No service fee is taken until step 2 is complete. That order is deliberate.</p>
+      <ol class="mt-12 grid gap-10 md:grid-cols-4">
+        <li><span class="font-display text-5xl text-gold">1</span><h3 class="mt-3 text-lg font-semibold">Talk</h3><p class="mt-2 leading-relaxed text-muted">A free 15-minute call with our Nigeria team about where, why and who pays.</p></li>
+        <li><span class="font-display text-5xl text-gold">2</span><h3 class="mt-3 text-lg font-semibold">Verify</h3><p class="mt-2 leading-relaxed text-muted">We meet you, sight your originals and check your statements directly with your bank.</p></li>
+        <li><span class="font-display text-5xl text-gold">3</span><h3 class="mt-3 text-lg font-semibold">Review</h3><p class="mt-2 leading-relaxed text-muted">Our UK team reviews the file. You get a clear go, a plan to strengthen it, or an honest no.</p></li>
+        <li><span class="font-display text-5xl text-gold">4</span><h3 class="mt-3 text-lg font-semibold">Submit</h3><p class="mt-2 leading-relaxed text-muted">We book your appointment, prepare the submission and keep your passport safe throughout.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Principles -->
+  <section class="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-2">
+    <div>
+      <h2 class="font-display text-4xl sm:text-5xl">What we promise</h2>
+      <ul class="mt-8 space-y-5 text-lg leading-relaxed">
+        <li class="flex gap-4"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold"></span>We never guarantee a visa. No agent can.</li>
+        <li class="flex gap-4"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold"></span>We tell you early if your profile is not ready, and what would change that.</li>
+        <li class="flex gap-4"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-gold"></span>Payments go to the company account only, with a receipt every time.</li>
+      </ul>
+    </div>
+    <div class="rounded-3xl border border-line bg-panel p-8">
+      <h3 class="font-display text-3xl text-gold">What we will never do</h3>
+      <ul class="mt-6 space-y-4 leading-relaxed text-muted">
+        <li>Lend or park money to make a bank statement look stronger.</li>
+        <li>Write letters in your employer's, host's or sponsor's name.</li>
+        <li>Coach answers that do not match your documents.</li>
+        <li>Claim connections inside any embassy.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Destinations -->
+  <section id="destinations" class="mx-auto max-w-6xl px-5 py-20">
+    <h2 class="font-display text-4xl sm:text-5xl">Where we start</h2>
+    <p class="mt-4 max-w-xl text-muted">The best first trip is one the rules favour. Here is how we group destinations.</p>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <article class="rounded-3xl border border-line p-8 transition hover:border-gold">
+        <h3 class="text-lg font-semibold">Easy entry</h3>
+        <p class="mt-3 leading-relaxed text-muted">Ghana, Senegal, Côte d'Ivoire, Kenya, Rwanda, Mauritius, Barbados. Visa-free or on arrival, with proof of return, stay and funds.</p>
+      </article>
+      <article class="rounded-3xl border border-line p-8 transition hover:border-gold">
+        <h3 class="text-lg font-semibold">Online visa</h3>
+        <p class="mt-3 leading-relaxed text-muted">South Africa, Vietnam, Thailand, Malaysia, Ethiopia, Qatar. Decided on your documents through the official portal.</p>
+            </article>
+      <article class="rounded-3xl border border-line p-8 transition hover:border-gold">
+        <h3 class="text-lg font-semibold">Premium visas</h3>
+        <p class="mt-3 leading-relaxed text-muted">UK, Schengen and Canada visitor visas. Open to strong, well-documented profiles. A trip to an easier destination first can help build your travel history.</p>
+      </article>
+    </div>
+    <p class="mt-8 text-sm text-muted">US visitor and student visas are currently suspended for most new Nigerian applicants. We say so plainly and do not sell what cannot be delivered.</p>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="mx-auto max-w-3xl px-5 py-20">
+    <h2 class="font-display text-4xl sm:text-5xl">Questions we hear most</h2>
+    <div class="mt-10 divide-y divide-line border-y border-line">
+      <details class="group py-5">
+        <summary class="flex items-center justify-between gap-6 text-lg font-medium">Can you guarantee my visa?<span class="plus text-2xl text-gold" aria-hidden="true">+</span></summary>
+        <p class="answer mt-3 leading-relaxed text-muted">No. Only the embassy decides. We make sure your file is honest, complete and consistent, and we tell you before you pay if we think it is not ready.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between gap-6 text-lg font-medium">Why do you check my bank statements yourselves?<span class="plus text-2xl text-gold" aria-hidden="true">+</span></summary>
+        <p class="answer mt-3 leading-relaxed text-muted">Officers look for unexplained deposits and statements that do not match your income. We get statements from your bank directly and ask you to explain large credits before anything is submitted.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between gap-6 text-lg font-medium">What if you decline my application?<span class="plus text-2xl text-gold" aria-hidden="true">+</span></summary>
+        <p class="answer mt-3 leading-relaxed text-muted">You pay nothing for the service. We explain why in writing and suggest a stronger route, such as a different destination or a plan to build your profile.</p>
+      </details>
+      <details class="group py-5">
+        <summary class="flex items-center justify-between gap-6 text-lg font-medium">Is my passport safe with you?<span class="plus text-2xl text-gold" aria-hidden="true">+</span></summary>
+        <p class="answer mt-3 leading-relaxed text-muted">Every handover is signed for, passports travel in sealed envelopes by insured courier, and your documents are stored in company systems only.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="border-t border-line bg-panel/50">
+    <div class="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-2">
+      <div>
+        <h2 class="font-display text-4xl sm:text-5xl">Tell us where you want to go</h2>
+        <p class="mt-4 max-w-md leading-relaxed text-muted">We reply within two working hours. The first call is free, and nothing here is a commitment.</p>
+        <p class="mt-8 text-muted">Prefer email? <a class="text-gold underline underline-offset-4" href="mailto:contact@safetyfive.co.uk">contact@safetyfive.co.uk</a></p>
+      </div>
+      <form id="enquiry" class="space-y-5" novalidate>
+        <div>
+          <label for="name" class="mb-2 block text-sm font-medium">Your name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" class="w-full rounded-xl border border-line bg-ink px-4 py-3 text-mist placeholder-muted/60 transition focus:border-gold focus:outline-none" placeholder="Full name as on your passport">
+        </div>
+        <div>
+          <label for="trip" class="mb-2 block text-sm font-medium">What are you planning?</label>
+          <select id="trip" name="trip" class="w-full rounded-xl border border-line bg-ink px-4 py-3 text-mist transition focus:border-gold focus:outline-none">
+            <option>A holiday or family visit</option>
+            <option>A business trip</option>
+            <option>Studying abroad</option>
+            <option>Corporate travel for my company</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div>
+          <label for="msg" class="mb-2 block text-sm font-medium">Destination and rough dates</label>
+          <textarea id="msg" name="msg" rows="4" class="w-full rounded-xl border border-line bg-ink px-4 py-3 text-mist placeholder-muted/60 transition focus:border-gold focus:outline-none" placeholder="For example: Nairobi, March, two adults"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-full bg-gold px-7 py-3 font-semibold text-ink transition hover:bg-mist">Send enquiry</button>
+        <p id="status" class="min-h-[1.5rem] text-sm text-muted" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="border-t border-line">
+  <div class="mx-auto max-w-6xl space-y-3 px-5 py-10 text-sm text-muted">
+    <p class="font-display text-xl text-mist">SafetyFive <span class="text-gold">travels</span></p>
+    <p>Offices in the United Kingdom and Nigeria. Registration and licence numbers will be shown here once issued.</p>
+    <p>We prepare and verify applications. Visa decisions are made solely by the embassy or consulate, and no outcome is guaranteed.</p>
+    <p>&copy; <span id="year"></span> SafetyFive travels. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Opens the visitor's email app with the enquiry filled in. Swap for a form service when you have one.
+  document.getElementById('enquiry').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name');
+    var status = document.getElementById('status');
+    if (!name.value.trim()) {
+      status.textContent = 'Please enter your name so we know who to reply to.';
+      name.focus();
+      return;
+    }
+    var body = 'Name: ' + name.value.trim() +
+      '\nPlanning: ' + document.getElementById('trip').value +
+      '\n\n' + document.getElementById('msg').value.trim();
+    window.location.href = 'mailto:contact@safetyfive.co.uk?subject=' +
+      encodeURIComponent('Trip enquiry from ' + name.value.trim()) +
+      '&body=' + encodeURIComponent(body);
+    status.textContent = 'Your email app should open with the enquiry ready to send.';
+  });
+</script>
+</body>
+</html>
